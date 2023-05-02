@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
+          integrity="sha384-OgVRvuATP1z7JjHLkuOU6Xw704+h835Lr+XmJL12jqnEJT0qbWrhjM6kRzE9ovD+" 
+          crossorigin="anonymous">
+		   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
+          integrity="sha384-OgVRvuATP1z7JjHLkuOU6Xw704+h835Lr+XmJL12jqnEJT0qbWrhjM6kRzE9ovD+" 
+          crossorigin="anonymous">
+		  <style>
+		body {
+			background-color: #8B008B;
+		}
+		.container {
+		display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+			margin-top: 50px;
+			margin-bottom: 50px;
+		}
+		form {
+			background-color: 	#D8BFD8;
+			padding: 10px;
+			border-radius: 5px;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+		}
+		h4 {
+			margin-bottom: 20px;
+			text-align: center;
+			color: #FFA07A;
+		}
+		h1 {
+			margin-bottom: 30px;
+			text-align: center;
+			color: #FFB6C1;
+		}
+		button[type=submit] {
+			background-color: #007bff;
+			border-color: #007bff;
+			color: #fff;
+			font-size: 18px;
+			padding: 10px 20px;
+			border-radius: 5px;
+			transition: all 0.3s;
+		}
+		button[type=submit]:hover {
+			background-color: #0069d9;
+			border-color: #0062cc;
+		}
+	</style>
+
+    <title>Mercari Price Prediction</title>
+  </head>
+  <body><h1>Mercari Price Prediction</h1>
+    <div class="container">
+      
+      <form action="{{ url_for('predict') }}" method="post">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" name="name" >
+        </div><br>
+            <div class="form-group">
+      <label for="category_name">Category Name</label>
+      <input type="text" class="form-control" id="category_name" name="category_name" required>
+    </div><br>
+    <div class="form-group">
+      <label for="brand_name">Brand Name</label>
+      <input type="text" class="form-control" id="brand_name" name="brand_name" required>
+    </div><br>
+    <div class="form-group">
+      <label for="item_description">Item Description</label>
+      <textarea class="form-control" id="item_description" name="item_description" rows="3" required></textarea>
+    </div><br>
+    <div class="form-group">
+      <label for="item_condition_id">Item Condition</label>
+      <select class="form-control" id="item_condition_id" name="item_condition_id" required>
+        <option value="1">New</option>
+        <option value="2">Like New</option>
+        <option value="3">Good</option>
+        <option value="4">Fair</option>
+        <option value="5">Poor</option>
+      </select>
+    </div><br>
+    <div class="form-group">
+      <label for="shipping">Shipping</label>
+      <select class="form-control" id="shipping" name="shipping" required>
+        <option value="0">Seller Pays</option>
+        <option value="1">Buyer Pays</option>
+      </select>
+    </div><br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form></div>
+ <br><br>
+  {% if prediction_text %}
+  <br>
+  <h4>{{ prediction_text }}</h4>
+  {% endif %}
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" 
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" 
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmIaVO5Bh/kpJQ5tuWq0" 
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" 
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU6Xw704+h835Lr+XmJL12jqnEJT0qbWrhjM6kRzE9ovD+" 
+        crossorigin="anonymous"></script>
+
+  </body>
+</html>
